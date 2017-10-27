@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>【一覧】</h2>
+            <table border="1">
+                <thead>
+                    <th>ID</th>
+                    <th>カテゴリ</th>
+                    <th>タイトル</th>
+                    <th>内容</th>
+                    <th>評価</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr jsfc="ui:repeat" var="item" value="#{indexBean.bookList}">
+                        <td>#{item.id}</td>
+                        <td>#{item.categoryName}</td>
+                        <td>#{item.title}</td>
+                        <td>#{item.memo}</td>
+                        <td>#{indexBean.getPointMark(item.point)}</td>
+                        <td><h:commandButton value="編集" action="#{indexBean.update(item.id)}" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h:commandButton value="新規登録" action="#{indexBean.add()}" />
+        </h:form>
+    </h:body>
+</html>
+
